@@ -16,7 +16,7 @@ def walkFile(file):
 
 
 config_file = 'configs/ocor/ocor_swin_large_patch4_window7_fpn_300_proposals.py'
-checkpoint_file = "E:/BaiduNetdiskDownload/model.pth"
+checkpoint_file = "./checkpoint/model.pth"
 
 # %%
 
@@ -25,7 +25,7 @@ model = init_detector(config_file, checkpoint_file, device='cuda:0')
 
 # %%
 
-_, _, files = walkFile('E:/Datasets/ASSR/images/test/')
+_, _, files = walkFile('./Datasets/ASSR/images/test/')
 # print(files)
 
 
@@ -35,7 +35,7 @@ gray_colors = [255, 229, 204, 178, 153]
 k = 0
 for file in files:
 
-    result = inference_detector(model, 'E:/Datasets/ASSR/images/test/' + file)
+    result = inference_detector(model, './Datasets/ASSR/images/test/' + file)
 
     print(k)
     #
@@ -56,7 +56,7 @@ for file in files:
                 black_img[mask] = gray_colors[i]
                 color_img[mask] = colors[i]
 
-    cv2.imwrite('E:/Datasets/ASSR/results/final/' + file[:-4] + '.png', color_img)
-    cv2.imwrite('E:/Datasets/ASSR/results/final-gray/' + file[:-4] + '.png', black_img)
+    cv2.imwrite('./Datasets/ASSR/results/final/' + file[:-4] + '.png', color_img)
+    cv2.imwrite('./Datasets/ASSR/results/final-gray/' + file[:-4] + '.png', black_img)
 
     k = k + 1

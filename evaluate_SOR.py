@@ -271,20 +271,20 @@ def eval_spr(spr_data_path):
 if __name__ == '__main__':
     print("Evaluate")
 
-    DATASET_ROOT = "E:/Datasets/ASSR/"   # Change to your location
-    PRE_PROC_DATA_ROOT = "E:/Datasets/ASSR_Data/"   # Change to your location
+    DATASET_ROOT = "./Datasets/ASSR"   # Change to your location
+    PRE_PROC_DATA_ROOT = "./Datasets/ASSR_Data/"   # Change to your location
     data_split = "test"
     dataset = DatasetTest(DATASET_ROOT, PRE_PROC_DATA_ROOT, data_split, eval_spr=True)
 
     ####################################################
-    map_path = "E:/Datasets/ASSR/results/final-gray/"
+    map_path = "./Datasets/ASSR/results/final-gray/"
 
     # Calculate MAE
     eval_mae(dataset, map_path)
     eval_mae_binary_mask(dataset, map_path)
 
     ####################################################
-    out_root = "../spr_data/"
+    out_root = "./spr_data/"
     out_path = out_root + "spr_data"
     if not os.path.exists(out_root):
         os.makedirs(out_root)
